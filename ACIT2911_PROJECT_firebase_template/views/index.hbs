@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+<!--    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>-->
+<!--    <script>-->
+<!--        // Initialize Firebase-->
+<!--        var config = {-->
+<!--            apiKey: "AIzaSyCT-ig3IbJNgfDjoPqrOjjfrXj-pFkRuj0",-->
+<!--            authDomain: "acit2911-project.firebaseapp.com",-->
+<!--            databaseURL: "https://acit2911-project.firebaseio.com",-->
+<!--            projectId: "acit2911-project",-->
+<!--            storageBucket: "acit2911-project.appspot.com",-->
+<!--            messagingSenderId: "290770888287"-->
+<!--        };-->
+<!--        firebase.initializeApp(config);-->
+<!--    </script>-->
+<!--    <script src="../js/register.js"></script>-->
+</head>
+<body>
+<form method="post" action="/register">
+    <label>User Name</label>
+    <input name="username" type="text" id="usrname" placeholder="Enter your name" required minlength="1"><br>
+
+    <label for="email">Email address</label>
+    <input name="email" type="Email" id="email" placeholder="Enter email" required minlength="1"><br>
+
+    <label>Password</label>
+    <input name="password" type="password" id="password" placeholder="Password" required minlength="8"><br>
+
+    <label>Confirm Password</label>
+    <input name="confirm_password" type="password" id="re_password" placeholder="Password" required minlength="8"><br>
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+<br>
+<h2>{{account_creation}}</h2>
+<br>
+<form method="post" action="/delete_account">
+    <input name="email" type="Email" placeholder="Enter email" required><br>
+    <input type="submit" class="btn btn-primary" value="Delete">
+</form>
+<h2>{{account_deletion}}</h2>
+<br>
+<form method="post" action="/account_details">
+    <input name="email" type="Email" placeholder="Enter email" required><br>
+    <input type="submit" class="btn btn-primary" value="Show">
+</form>
+<br>
+{{# each account_details}}
+    <h2>{{this}}</h2>
+{{/each}}
+<br>
+
+<form method="post" action="/update_username">
+    <input name="email" type="Email" placeholder="Enter email" required><br>
+    <input name="username" type="text" placeholder="Enter new username" required><br>
+    <input type="submit" class="btn btn-primary" value="Update">
+</form>
+<br>
+<h2>{{update}}</h2>
+</body>
+</html>
