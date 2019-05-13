@@ -23,7 +23,7 @@
 <script src="JavaScript/finalproject.js"></script>
 <div class="container-fluid" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="Index.html">Game Name</a>
+        <a class="navbar-brand" href="http://localhost:8080/"><img src="./Images/emblem.png" class="img-responsive">Fight Simulator</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +31,8 @@
             <div class="navbar-nav ml-auto w-100 justify-content-end">
                 <a class="nav-link" href="photo.html">Gallery</a>
                 <a class="nav-link" href="http://localhost:8081">Message</a>
-                <a class="nav-link" href="http://localhost:8080/sign_up">Register</a>
-                <a class="nav-link" href="http://localhost:8080/login">Login</a>
+                <a class="nav-link" href="http://localhost:8000/register">Register</a>
+                <a class="nav-link" href="http://localhost:8000/login">Login</a>
             </div>
         </div>
     </nav>
@@ -52,8 +52,10 @@
                             <input type="password" placeholder="Enter Password" name="password" required>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary" onclick="signIn()" value="Login">logIn</button>
+                        <input type="submit" value="Login">
+<!--                        <input type="submit" class="btn btn-primary" onclick="signIn()" value="Login">logIn</input>-->
                         <br><br>
+                        {{output}}
                     </form>
                 </div>
 
