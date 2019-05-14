@@ -117,8 +117,11 @@ app.get('/facetime', async (request, response) => {
         user = user_info[0].email;
         request.session.userId = user_info[0].user_name;
         response.redirect('/index_b');
-        fs.unlink(path);
-
+        fs.unlink(path, (err) => {
+            if (err) {
+                console.log(err)
+            }
+        });
     }
 });
 
@@ -134,6 +137,10 @@ app.get('/', redirectHome, (request, response) => {
         username: user
     })
     // }
+});
+
+app.get('/login', redirectHome, (request, response) => {
+    response.status(200).render('login.hbs')
 });
 
 app.post('/user_logging_in', async (request, response) => {

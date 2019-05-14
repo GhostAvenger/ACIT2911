@@ -160,8 +160,7 @@ nav {
 }
 
 .lightbox {
-  background:rgba(61, 55, 55,0.4);
-  border: 20px solid rgb(0, 0, 0);
+  border: 20px solid rgba(0, 0, 0,0);
   padding: 50px;
   width: 100%;
   float: none;
@@ -201,10 +200,4 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-#lightbox {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
 }

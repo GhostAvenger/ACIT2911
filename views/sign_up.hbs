@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{{title_page}}</title>
+        <title>Normal Register</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -20,10 +20,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto w-100 justify-content-end">
-                    <a class="nav-link" href="photo.html">Gallery</a>
-                    <a class="nav-link" href="http://localhost:8081">Message</a>
-                    <a class="nav-link" href="http://localhost:8081/register">Register</a>
-                    <a class="nav-link" href="http://localhost:8081/login">Login</a>
+                    <a class="nav-link" href="http://localhost:8000/register">Facial Register</a>
+                    <a class="nav-link" href="http://localhost:8000/login">Facial Login</a>
+                    <a class="nav-link" href="http://localhost:8080/login">Normal Login</a>
                 </div>
             </div>
         </nav>
@@ -33,15 +32,13 @@
                 <div class="row">
                     <div class="col-sm-3 text-info"></div>
                     <div class="col-sm-7 text-info">
-                        <h1>Register</h1><br>
+                        <h1>Normal Register</h1><br>
                         <div class="form-group margin_reduce">
                             <form method="POST" action="/insert">
                                 <div class="form-group margin_reduce">
-                                    <label><b>First Name</b></label><br>
+                                    <label><b>Username</b></label><br>
+                                    {{output_error}}<br>
                                     <input id="first_name" type="text" placeholder="Enter First Name" name="first_name" required minlength="1">
-                                    <br><br>
-                                    <label><b>Last Name</b></label><br>
-                                    <input id="last_name" type="text" placeholder="Enter Last Name" name="last_name" required minlength="1">
                                     <br><br>
                                     <label><b>Email</b></label><br>
                                     <input id="email" type="Email" placeholder="Enter Email" name="email" required>
@@ -65,8 +62,6 @@
                                 <br><br>
                                 <input type="submit" value="Submit">
                             </form>
-                            <br>
-                            {{output_error}}
                         </div>
                     </div>
 
@@ -83,87 +78,6 @@
             </footer>
         </div>
     </div>
-    <!--<script>-->
-        <!--//get references to th 3 html elments on the page-->
-        <!--var uploader = document.getElementById("uploader");-->
-        <!--var fileButton = document.getElementById("fileButton");-->
-        <!--var holder = document.getElementById("holder");-->
-        <!--var storage = firebase.storage();-->
-        <!--function getImageForPath(p){-->
-            <!--var storageRef = firebase.storage().ref();-->
-            <!--var spaceRef = storageRef.child(p);-->
-            <!--storageRef.child(p).getDownloadURL().then(function(url) {-->
-                <!--var fullurl = url;-->
-                <!--alert(fullurl);-->
-                <!--holder.src = fullurl;-->
-            <!--}).catch(function(error) {-->
-            <!--});-->
-        <!--}-->
-        <!--fileButton.addEventListener('change', function(e){-->
-            <!--alert("uploading file...");-->
-            <!--var file = e.target.files[0];-->
-            <!--var storageRef = firebase.storage().ref('images/'+file.name);-->
-            <!--var task = storageRef.put(file);-->
-            <!--task.on('state_changed',-->
-                    <!--function progress(snapshot) {-->
-                        <!--var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;-->
-                        <!--uploader.value = percentage;-->
-                    <!--},-->
-                    <!--function error(err){-->
-                        <!--cosole.log(err);-->
-                    <!--},-->
-                    <!--function complete(){-->
-                        <!--alert("upload complete");-->
-                        <!--getImageForPath('images/'+file.name);-->
-                    <!--}-->
-            <!--);-->
-        <!--});-->
-    <!--</script>-->
-    <!--<script>-->
-        <!--function adduser(){-->
-            <!--alert("adding user!");-->
-<!--// form input-->
-            <!--var email=document.getElementById("InputEmail1").value;-->
-            <!--var password =document.getElementById("InputPassword1").value;-->
-            <!--firebase.auth().createUserWithEmailAndPassword(email,-->
-                    <!--password).catch(function(error){-->
-                <!--var errorCode = error.code;-->
-                <!--var errorMessage = error.message;-->
-                <!--alert("error"+ error.message);-->
-            <!--});-->
-        <!--}-->
-        <!--function signIn(){-->
-            <!--alert("Signing In");-->
-            <!--var email=document.getElementById("InputEmail1").value;-->
-            <!--var password =document.getElementById("InputPassword1").value;-->
-            <!--firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {-->
-                <!--alert("Error signing in");-->
-<!--// Handle Errors here.-->
-                <!--var errorCode = error.code;-->
-                <!--var errorMessage = error.message;-->
-                <!--alert(errormessage);-->
-            <!--});-->
-        <!--}-->
-        <!--function signOut(){-->
-            <!--firebase.auth().signOut().then(function() {-->
-                <!--alert("Signed out!");-->
-            <!--}).catch(function(error) {-->
-                <!--var errorMessage = error.message;-->
-                <!--alert(errormessage);-->
-            <!--});-->
-        <!--}-->
-        <!--firebase.auth().onAuthStateChanged(function(user) {-->
-            <!--if (user) {-->
-<!--// User is signed in.-->
-                <!--alert(user.email);-->
-                <!--console.log(user.toJSON());-->
-            <!--} else {-->
-<!--// No user is signed in.-->
-                <!--alert("user not signed in");-->
-            <!--}-->
-        <!--});-->
-    <!--</script>-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
