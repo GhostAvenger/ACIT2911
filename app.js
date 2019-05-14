@@ -14,10 +14,6 @@ const {
     SESS_NAME = 'sid',
     SESS_SECRET = 'fight sim'
 } = process.env;
-// const port = process.env.PORT || 8080;
-// const session_lifetime = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2;
-// const session_name = process.env.SESS_NAME || 'sid';
-// const session_secret = process.env.SESS_SECRET || 'fight sim';
 
 const user_db = require('./javascript/user_db.js');
 // const character_db = require('./javascript/character_db.js');
@@ -102,14 +98,14 @@ app.get('/facetime', async (request, response) => {
         var readUser = fs.readFileSync(path);
 
         var username = stringFromArray(readUser);
-        console.log(`reading: ${username}`)
+        // console.log(`reading: ${username}`)
 
     } else {
-        console.log(false)
+        response.redirect('/')
     }
 
     var user_info = await user_db.check_username(username);
-    console.log(user_info);
+    // console.log(user_info);
     if (user_info === []) {
         response.redirect('/')
     } else {
