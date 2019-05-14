@@ -425,12 +425,11 @@ app.post('/forum_post', redirectLogin, async (request, response) => {
 
 app.listen(PORT, () => {
     console.log(`Server is up on the port ${PORT}`);
-    console.log(`http://localhost:${PORT}/`);
-    console.log(`http://localhost:${PORT}/forum`);
-
-    console.log(`http://localhost:8000/login`);
-    console.log(`http://localhost:8000/register`)
-    // character_db.init();
+    // console.log(`http://localhost:${PORT}/`);
+    // console.log(`http://localhost:${PORT}/forum`);
+    //
+    // console.log(`http://localhost:8000/login`);
+    // console.log(`http://localhost:8000/register`)
 });
 
 module.exports = app;
