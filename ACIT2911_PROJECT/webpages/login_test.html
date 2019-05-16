@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login claire</title>
+    <title>Facial Login</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../static/css/stylesheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,16 +42,31 @@
 <body>
 <div class="container-fluid" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="Index.html">Game Name</a>
+        <a class="navbar-brand" href="http://localhost:8080/">Fight Simulator</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto w-100 justify-content-end">
-                <a class="nav-link" href="photo.html">Gallery</a>
-                <a class="nav-link" href="contact.html">Message</a>
-                <a class="nav-link" href="register.html">Register</a>
-                <a class="nav-link" href="login.html">Login</a>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Register
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                        <a class="dropdown-item" href="http://localhost:8000/register">Facial Register</a>
+                        <a class="dropdown-item" href="http://localhost:8080/sign_up">Normal Register</a>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                        <a class="dropdown-item" href="http://localhost:8000/login">Facial Login</a>
+                        <a class="dropdown-item" href="http://localhost:8080/login">Normal Login</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -61,7 +76,7 @@
                     <div class="col-sm-3 text-info"></div>
                     <div class="col-sm-7 text-info">
                         <div class="form-group margin_reduce">
-                            <h1>Login</h1><br>
+                            <h1>Facial Login</h1><br>
                             <label for="usr_email" class="display">Email address</label><br>
                             <input type="email"  id="usr_email" aria-describedby="emailHelp" placeholder="Enter email" >
                             <small id="emailHelp" class="form-text  text-secondary " >We'll never share your email with anyone else.</small><br>
@@ -99,8 +114,6 @@
     <footer class="footer">
         <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank"></a></p>
     </footer>
-
-</div>
 
 <script type="text/javascript" src="../static/js/app.js"></script>
 <script type="text/javascript" src="../static/js/login.js"></script>

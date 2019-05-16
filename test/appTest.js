@@ -10,7 +10,7 @@ const app = require('../app.js');
 const user_db = require('../javascript/user_db.js');
 
 describe('GET /', () => {
-    it("should return webpage with title of 'Official Front Page' ", (done) => {
+    it("should return webpage with title of 'Fight Simulator' ", (done) => {
         request(app)
             .get('/')
             .set('Accept', 'application/json')
@@ -20,7 +20,7 @@ describe('GET /', () => {
                 // console.log(res.text);
                 var $ = cheerio.load(res.text);
                 var title = $('title').text();
-                assert.equal(title, 'Official Front Page');
+                assert.equal(title, 'Fight Simulator');
                 done()
             })
     });
@@ -36,9 +36,15 @@ describe('POST /user_logging_in', () => {
             })
             .then((response) => {
                 expect(response).to.have.status(200);
-                var $ = cheerio.load(response.text);
-                var output = $('form > div > p').text();
-                assert.equal(output, 'Password incorrect');
+                // console.log(response.text);
+
+                var pattern = /Password incorrect/;
+                var result = pattern.test(response.text);
+                assert.equal(result, true);
+
+                // var $ = cheerio.load(response.text);
+                // var output = $('form > div > p').text();
+                // assert.equal(output, 'Password incorrect');
             })
             .catch((err)=> {
                 console.log(err)
@@ -53,16 +59,22 @@ describe('POST /user_logging_in', () => {
                 password: 'hi'
             })
             .then((response) => {
-                var $ = cheerio.load(response.text);
-                var output = $('form > div > p').text();
-                assert.equal(output, 'Email is not found');
+
+                // console.log(response.text);
+
+                var pattern = /Email is not found/;
+                var result = pattern.test(response.text);
+                assert.equal(result, true);
+                // var $ = cheerio.load(response.text);
+                // var output = $('form > div > p').text();
+                // assert.equal(output, 'Email is not found');
             })
     })
 });
 
 describe('GET /character', () => {
     var agent = chai.request.agent(app);
-    it('should show characters info', (done) => {
+    it('should show characters info', async () => {
         agent
             .post('/user_logging_in')
             .send({
@@ -75,10 +87,14 @@ describe('GET /character', () => {
                     .then(async (response) => {
                         // console.log(response.text);
 
-                        var $ = cheerio.load(response.text);
-                        var display = $('div > ul > li > p').text();
-                        assert.equal(display, 'CREATE CHARACTER NOWCREATE CHARACTER NOWCREATE CHARACTER NOW');
-                        done()
+                        var pattern = /Create new Character/;
+                        var result = pattern.test(response.text);
+                        assert.equal(result, true);
+
+                        // var $ = cheerio.load(response.text);
+                        // var display = $('div > ul > li > p').text();
+                        // assert.equal(display, 'CREATE CHARACTER NOWCREATE CHARACTER NOWCREATE CHARACTER NOW');
+                        // done()
                     })
         })
     });
@@ -210,7 +226,7 @@ describe('GET /index_b', () => {
                 // console.log(response.text);
                 var $ = cheerio.load(response.text);
                 var title = $('title').text();
-                assert.equal(title, 'Official Front Page');
+                assert.equal(title, 'Fight Simulator');
                 done();
             })
             .catch((err) => {

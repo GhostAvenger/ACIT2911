@@ -34,7 +34,13 @@ describe('get_info function', () => {
     it('should return an object', async () => {
         let info = await fight.get_info('test_fighting');
 
-        assert.typeOf(info, 'object')
+        // console.log(info)
+
+        assert.typeOf(info, 'object');
+
+        assert.equal(info.player_dps, 10);
+        assert.equal(info.player_health, 50);
+        assert.equal(info.player_name, 'Player_Name')
     });
 
     it('returns an error if email not found', async()=>{
@@ -44,6 +50,26 @@ describe('get_info function', () => {
     })
 });
 
-// describe('battle function', () => {
-//     it('updates a function')
-// })
+describe('battle function', () => {
+    it('updates the calculated battle damage', async () => {
+        await fight.battle(50, 50, 10, 10, 'test_fighting');
+
+        let info = await fight.get_info('test_fighting');
+
+        // assert.equal(info.enemy_dps, 10);
+        assert.equal(info.enemy_health, 40);
+        assert.equal(info.player_dps, 10);
+        assert.equal(info.player_health, 40);
+        assert.equal(info.player_name, 'Player_Name');
+        // console.log(info)
+    });
+
+    it('ensures damages does not become negative', async() => {
+        await fight.battle(10, 10, 50, 50, 'test_fighting');
+
+        let info = await fight.get_info('test_fighting');
+        // console.log(info)
+        assert.equal(info.enemy_health, 0);
+        assert.equal(info.player_health, 0);
+    })
+});

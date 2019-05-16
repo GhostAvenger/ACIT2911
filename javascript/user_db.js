@@ -32,12 +32,6 @@ var check_username = async (user_name) => {
         });
 
         return list
-
-        //returns a list of documents info
-        // console.log(list)
-        // return list.sort((a, b) => {
-        //     return new Date(b.created) - new Date(a.created)
-        // });
     } catch (err) {
         console.log(err);
         return 'No new messages';
@@ -51,6 +45,41 @@ var check_username = async (user_name) => {
 //         console.log(err)
 //     }
 // );
+
+var check_username_jims = async () => {
+    //fetches all the documents in the collection
+    var db = firebase.firestore();
+
+    var list = [];
+
+    try {
+        var messages = await db.collection('accounts');
+
+        var get_messages = await messages.get();
+
+        get_messages.forEach((element) => {
+            // console.log(element.data().username)
+            if (element.data().username) {
+                list.push(element.data())
+            }
+        });
+
+        return list
+    } catch (err) {
+        console.log(err);
+        return 'No new messages';
+    }
+};
+
+// check_username_jims().then((result) => {
+//     console.log(result)
+//     }
+// ).catch((err) => {
+//     if (err) {
+//         console.log('WE GOT AN ERROR BOIS');
+//         console.log(err)
+//     }
+// })
 
 /////////////////////////////////////////////////////////////////////////////////////
 // get_documents().then( (data) => {
@@ -346,5 +375,6 @@ module.exports = {
     get_documents,
     post_message,
     delete_test_message,
-    check_username
+    check_username,
+    check_username_jims
 };
