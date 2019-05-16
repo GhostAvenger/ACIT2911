@@ -162,3 +162,16 @@ describe('get_documents function', () => {
         assert.equal(get_documents.length, 27)
     })
 });
+
+describe('check_username function', () => {
+    it('returns a list of one object', async() => {
+        let username = await user_db.check_username('test_phase');
+        // console.log(username)
+
+        assert.typeOf(username, 'array');
+        assert.equal(username.length, 1);
+        assert.equal(username[0].email, 'test@gmail.com');
+        assert.equal(username[0].password, 'testpassword');
+        assert.equal(username[0].user_name, 'test_phase')
+    })
+});

@@ -80,7 +80,7 @@ function wait(ms){
 }
 
 app.get('/facetime', async (request, response) => {
-    wait(1500);
+    // wait(1500);
     function stringFromArray(data)
     {
         var count = data.length;
@@ -406,7 +406,7 @@ app.post('/delete', redirectLogin, async (request, response) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////FORUM PAGE/////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-app.get('/forum', async (request, response) => {
+app.get('/forum', redirectLogin, async (request, response) => {
     var get_message =  await user_db.get_documents('messages');
 
     response.render('test_forum.hbs', {
@@ -421,6 +421,12 @@ app.post('/forum_post', redirectLogin, async (request, response) => {
     await user_db.post_message(message_title, message_body, user);
 
     response.redirect('back');
+});
+
+app.use((request, response) => {
+    response.send({
+        error: `404, site not found`
+    });
 });
 
 app.listen(PORT, () => {
