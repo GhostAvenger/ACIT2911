@@ -73,39 +73,46 @@
         <div class="container-fluid">
             <div class="register">
                 <div class="row">
-                    <div class="col-sm-3 text-info"></div>
-                    <div class="col-sm-7 text-info">
-                        <div class="form-group margin_reduce">
-                            <h1>Facial Login</h1><br>
-                            <label for="usr_email" class="display">Email address</label><br>
-                            <input type="email"  id="usr_email" aria-describedby="emailHelp" placeholder="Enter email" >
-                            <small id="emailHelp" class="form-text  text-secondary " >We'll never share your email with anyone else.</small><br>
-                        </div>
-                        <div class="form-group margin_reduce">
-                            <label for="usr_pass" class="display">Password </label>
-                            <br>
-                            <input type="password" id="usr_pass" placeholder="Password">
-                        </div>
+<!--                    <div class="col-sm-3 text-info"></div>-->
+                    <div class="col text-center text-info">
+<!--                        <div class="form-group margin_reduce">-->
+<!--                            <h1>Facial Login</h1><br>-->
+<!--                            <label for="usr_email" class="display">Email address</label><br>-->
+<!--                            <input type="email"  id="usr_email" aria-describedby="emailHelp" placeholder="Enter email" >-->
+<!--                            <small id="emailHelp" class="form-text  text-secondary " >We'll never share your email with anyone else.</small><br>-->
+<!--                        </div>-->
+<!--                        <div class="form-group margin_reduce">-->
+<!--                            <label for="usr_pass" class="display">Password </label>-->
+<!--                            <br>-->
+<!--                            <input type="password" id="usr_pass" placeholder="Password">-->
+<!--                        </div>-->
 
-                        <button type="submit" class="btn btn-primary" onclick="signIn()">Login</button>
+<!--                        <button type="submit" class="btn btn-primary" onclick="signIn()">Login</button>-->
+<!--                        <div class="form-group text-center margin_reduce">-->
                         <button type="submit"  class="btn btn-primary" onclick="faceLogin()">Face Login</button>
-                        <br><br>
+
                         <div id="app">
-                            <div style="background: url('../static/imgs/icon-plane.png') #040308; opacity: 0.2">
-                                <video  id="video" autoplay style="width: 0%;height: 0%;opacity: 0.2"></video>
+<!--                            <div id="result_div">-->
+<!--                                <img id="result_pic" src="../static/imgs/tick.png"/>-->
+<!--                                <div class="tick"></div>-->
+<!--                            </div>-->
+                            <div>
+                                <div id="result_div">
+                                    <img id="result_pic" src="../static/imgs/tick.png"/>
+                                    <!--                                <div class="tick"></div>-->
+                                </div>
+                                <video  id="video" autoplay style="width: 0%;height: 0%;opacity: 1"></video>
                                 <!--draw video screenshots-->
                                 <canvas id="canvas" width="480" height="320"></canvas>
                             </div>
                             <!-- /.right-sidebar -->
                             <!-- Add the sidebar's background. This div must be placed
                                      immediately after the control sidebar -->
-                            <div id="result_div">
-                                <img id="result_pic" src="../static/imgs/tick.png"/>
-                                <div class="tick"></div>
-                            </div>
                         </div>
+                        <br><br><br><br><br><br><br><br>
                     </div>
-                    </div>
+<!--                    </div>-->
+                </div>
 
             </div>
         </div>

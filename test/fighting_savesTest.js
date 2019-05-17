@@ -27,6 +27,19 @@ describe('function add_info', () => {
         assert.isNumber(arena.data().enemy_health)
         // console.log(arena.data())
         // console.log(assert.isNumber(arena.data().enemy_health))
+    });
+
+    it('enemy health is less than player health by ten but greater than 5', async() => {
+        await fight.add_info('Player_Name', 50, 10, 'test_fighting');
+
+        var db = firebase.firestore();
+        var arena = await db.collection('arena').doc('test_fighting').get();
+
+        if (arena.data().player_health < arena.data().enemy_health) {
+            assert.isAtLeast(arena.data().enemy_health, 50)
+        }
+
+        // console.log(arena.data())
     })
 });
 

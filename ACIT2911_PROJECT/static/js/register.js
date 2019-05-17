@@ -88,11 +88,18 @@ function addData(){
                 console.log("Error happened");
             });
         }
+        // var data = {
+        //     email: email,
+        //     password: password,
+        //     username: user_name
+        // }
+        // fire_database.collection("accounts").doc(email).set(data)
         fire_database.collection("accounts").add({
             user_name: user_name,
             email: email,
             password: password
-        }).then(
+        })
+        .then(
             setTimeout(function(){
                 window.location.href="http://localhost:8080/success"
             }, 1400)

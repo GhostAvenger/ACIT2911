@@ -3,7 +3,7 @@ var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
 var timeOut = 5 * 1000; // time out at 6 seconds
-var start_time = 0
+var start_time = 0;
 
 function getUserMediaToPhoto(constraints,success,error) {
     navigator.getUserMedia_ = (navigator.mediaDevices.getUserMedia
@@ -53,6 +53,7 @@ function postFace() {
                         document.getElementById("result_pic").src = "../static/imgs/tick.png";
                         document.getElementById("result_div").style.display = "block";
                         setTimeout(function(){
+                            // window.location.href="http://47.254.47.108:8080/success"
                             window.location.href="http://localhost:8080/success"
                         },1400);
                 } else {

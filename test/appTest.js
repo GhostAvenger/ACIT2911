@@ -131,8 +131,8 @@ describe('GET /account', () => {
         agent
             .post('/user_logging_in')
             .send({
-                email: 'asdf@gmail.com',
-                password: 'asdfasdf'
+                email: 'createcharacter@gmail.com',
+                password: 'createcharacter'
             })
             .then((response) => {
                 return agent.get('/account')

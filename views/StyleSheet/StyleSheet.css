@@ -87,16 +87,23 @@ nav {
 .container{
     margin-top: 30px;
     background-color: transparent;
+    /*background: rgba(0, 0, 0, 0.7);*/
+}
 
+.container1{
+    margin-top: 30px;
+    /*background-color: transparent;*/
+    background: rgba(0, 0, 0, 0.7);
 }
 
 body{
-    background-image: url("../Images/background6.jpg");
+    background-image: url("../Images/background8.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    /*background: rgba(0, 0, 0, 0.3);*/
 }
 
 .jumbotron {
