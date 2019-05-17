@@ -68,7 +68,7 @@ app.use(express.static(__dirname + '/views'));
 // app.use(express.static(path.join(__dirname, '../', '/views')));
 
 app.get('/success', (request, response) => {
-    response.send('<h1>Redirecting to Home Page</h1><meta http-equiv="refresh" content="1;url=http://localhost:8080/facetime"/>')
+    response.render('success.hbs')
 });
 
 function wait(ms){
