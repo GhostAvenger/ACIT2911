@@ -79,6 +79,8 @@ function wait(ms){
     }
 }
 
+var face_authentication = false;
+var username_face = '';
 app.get('/facetime', async (request, response) => {
     // wait(1500);
     function stringFromArray(data)
@@ -110,6 +112,10 @@ app.get('/facetime', async (request, response) => {
         response.redirect('/')
     } else {
         wait(1500);
+        // console.log('from server');
+        // console.log(user_info);
+        face_authentication = true;
+        username_face = user_info[0].user_name;
         user = user_info[0].email;
         request.session.userId = user_info[0].user_name;
         response.redirect('/index_b');
@@ -167,6 +173,7 @@ app.post('/user_logging_in', async (request, response) => {
 });
 
 app.get('/logout', redirectLogin, (request, response) => {
+    face_authentication = false;
     request.session.destroy( err => {
         if (err) {
             request.session.clearCookie(SESS_NAME);
@@ -286,7 +293,8 @@ app.get('/account', redirectLogin, async (request, response) => {
             win: account_detail.win,
             losses: account_detail.lost,
             email: user,
-            header: 'Account'
+            header: 'Account',
+            username: request.session.userId,
         });
     }
 });
@@ -296,7 +304,7 @@ app.get('/account_error', async (request, response) => {
     response.render('account_error.hbs',{
         email: user,
         header: 'Account',
-        name: request.session.userId
+        username: request.session.userId
     })
 });
 
@@ -410,7 +418,10 @@ app.get('/forum', redirectLogin, async (request, response) => {
     var get_message =  await user_db.get_documents('messages');
 
     response.render('test_forum.hbs', {
-        message: await get_message
+        message: await get_message,
+        username: request.session.userId,
+        header: 'Message Forum',
+        face_on: face_authentication
     });
 });
 
@@ -419,8 +430,19 @@ app.post('/forum_post', redirectLogin, async (request, response) => {
     var message_body = request.body.message_body;
 
     await user_db.post_message(message_title, message_body, user);
+    // console.log('forum_post');
 
     response.redirect('back');
+});
+
+app.post('/forum_post_face', redirectLogin, (request, response) => {
+    var message_title = request.body.message_title;
+    var message_body = request.body.message_body;
+
+    user_db.post_message_face(message_title, message_body, username_face);
+    // console.log('forum_post_face');
+
+    response.redirect('back')
 });
 
 app.use((request, response) => {

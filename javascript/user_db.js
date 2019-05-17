@@ -24,10 +24,13 @@ var check_username = async (user_name) => {
 
         var get_messages = await messages.get();
 
+        // console.log(user_name);
+
         get_messages.forEach((element) => {
             // if (element.data().username)
             if (element.data().user_name === user_name) {
                 list.push(element.data())
+                // console.log(element.data())
             }
         });
 
@@ -45,41 +48,6 @@ var check_username = async (user_name) => {
 //         console.log(err)
 //     }
 // );
-
-var check_username_jims = async () => {
-    //fetches all the documents in the collection
-    var db = firebase.firestore();
-
-    var list = [];
-
-    try {
-        var messages = await db.collection('accounts');
-
-        var get_messages = await messages.get();
-
-        get_messages.forEach((element) => {
-            // console.log(element.data().username)
-            if (element.data().username) {
-                list.push(element.data())
-            }
-        });
-
-        return list
-    } catch (err) {
-        console.log(err);
-        return 'No new messages';
-    }
-};
-
-// check_username_jims().then((result) => {
-//     console.log(result)
-//     }
-// ).catch((err) => {
-//     if (err) {
-//         console.log('WE GOT AN ERROR BOIS');
-//         console.log(err)
-//     }
-// })
 
 /////////////////////////////////////////////////////////////////////////////////////
 // get_documents().then( (data) => {
@@ -325,6 +293,26 @@ var post_message = async(subject, message, email) => {
 
 };
 
+var post_message_face = async (subject, message, username) => {
+
+    try {
+        var db = firebase.firestore();
+
+        await db.collection('messages').add({
+            subject: subject,
+            username: username,
+            message: message,
+            created: Date()
+        });
+        return 'Message Posted'
+        // }
+    } catch (err) {
+        return 'Error posting message into database'
+    }
+};
+
+// console.log(post_message_face('subject', 'message', 'testing it out'))
+
 // post_message('hello jimmy i just posted this message', 'asdf@gmail.com', 'asdf@gmail.com').then((item) => {
 //     console.log(item)
 // }
@@ -374,7 +362,7 @@ module.exports = {
     check_email,
     get_documents,
     post_message,
+    post_message_face,
     delete_test_message,
-    check_username,
-    check_username_jims
+    check_username
 };
