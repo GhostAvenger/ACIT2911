@@ -159,7 +159,7 @@ describe('get_documents function', () => {
         let get_documents = await user_db.get_documents('messages');
 
         assert.typeOf(get_documents, 'array');
-        assert.equal(get_documents.length, 27)
+        assert.equal(get_documents.length, 25)
     })
 });
 
