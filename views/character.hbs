@@ -46,7 +46,7 @@
                         <div ><img src="Images/jimmy.jpg" alt="jimmyphoto"  class="jimmyphoto"></div>
                     </div>
                     <input type="button" value="Click to Go Back" onclick="history.back()">
-                    <form method="POST" action="/delete">
+                    <form method="POST" action="/delete" onsubmit="return confirm('Are you sure?')">
                         <input type="submit" value="Delete Existing Character">
                     </form>
 
